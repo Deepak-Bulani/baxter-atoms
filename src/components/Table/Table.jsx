@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import Table from 'rc-table';
 
 const DataTable = props => {
-  const {columns, data, visibleRows, total, pageNo} = props;
+  const {columns, data,rowsPerPage,visiblePages} = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const visiblePages = 3;
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentData = data.slice(indexOfFirstRow, indexOfLastRow);
 
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
@@ -22,7 +24,7 @@ const DataTable = props => {
     }
   };
 
-  const totalPages = Math.ceil(data.length / visibleRows);
+  const totalPages = Math.ceil(data.length / rowsPerPage);
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -33,22 +35,20 @@ const DataTable = props => {
 
   return (
     <div
-      className="border border-[#999] border-b-2 border-b-[#6C8CB3] rounded-b-[3px]
+      className="border border-primary-borderColorNew border-b-2 border-primary-boxHeaderColor rounded-b-[3px]
     "
-      style={{width: '1200px', margin: '0 auto'}}
     >
-      <div>This is the test Table</div>
       <Table
         columns={columns}
-        data={data}
+        data={currentData}
         tableLayout={'fixed'}
         className="min-w-full"
-        rowClassName="bg-white border-t border-[#999]"
+        rowClassName="bg-white border-t border-primary-borderColorNew"
       />
 
-      <div className="flex justify-between items-center px-2 py-1 bg-[#6C8CB3] text-white text-[12px]">
+      <div className="flex justify-between items-center px-2 py-1  bg-primary-boxHeaderColor text-white text-[12px]">
         <span>
-          Files {visibleRows * 2} to {visibleRows * 3} of {total}
+          Files {indexOfFirstRow + 1} to {Math.min(indexOfLastRow, data.length)} of {data.length}
         </span>
 
         <div>
@@ -65,7 +65,7 @@ const DataTable = props => {
           {pageNumbers.slice(startPage - 1, endPage).map(number => (
             <button
               key={number}
-              onClick={() => handlePageChange(number)} 
+              onClick={() => handlePageChange(number)}
               className={`mx-1 px-3 py-1 border rounded ${
                 currentPage === number ? 'bg-gray-500 text-black' : 'bg-blue-500 text-white'
               }`}
