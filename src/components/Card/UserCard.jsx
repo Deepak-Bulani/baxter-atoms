@@ -1,6 +1,6 @@
 // src/components/UserCard.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const UserCard = ({ accountDetails }) => {
   return (
@@ -15,8 +15,8 @@ const UserCard = ({ accountDetails }) => {
             <div className="text-left">
               <p className="text-xs m-0 leading-none">{detail.value}</p>
               <Link
-to={detail.link}
-className="text-blue-500 text-xs hover:underline m-0 leading-none block"
+                to={detail.link}
+                className="text-blue-500 text-xs hover:underline m-0 leading-none block"
               >
                 {detail.linkText}
               </Link>
@@ -28,5 +28,4 @@ className="text-blue-500 text-xs hover:underline m-0 leading-none block"
     </div>
   );
 };
-
 export default UserCard;
