@@ -9,7 +9,13 @@ export default defineConfig({
 			name: "remotes",
 			filename: "atomicLibrary.js",
       exposes: {
-        "./DataTable": "./src/components/Table/Table.jsx"
+        "./DataTable": "./src/components/Table/Table.jsx",
+        "./Button": "./src/components/Form/Button.jsx",
+        "./Input": "./src/components/Form/Input.jsx",
+        "./Option": "./src/components/Form/Option.jsx",
+        "./UserCard": "./src/components/Card/UserCard.jsx",
+        "./Tabs": "./src/components/Tabs/Tabs.jsx",
+        "./Accordian": "./src/components/Accordian/Accordian.jsx",
       },
 			shared: ["react", "react-dom"],
 		}),

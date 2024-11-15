@@ -14,12 +14,12 @@ const UserCard = ({ accountDetails }) => {
             </div>
             <div className="text-left">
               <p className="text-xs m-0 leading-none">{detail.value}</p>
-              <Link
+              {/* <Link
                 to={detail.link}
                 className="text-blue-500 text-xs hover:underline m-0 leading-none block"
               >
                 {detail.linkText}
-              </Link>
+              </Link> */}
               <p>Link</p>
             </div>
           </div>

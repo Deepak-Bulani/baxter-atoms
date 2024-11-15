@@ -1,26 +1,26 @@
-import React, {useState} from 'react';
-import Table from 'rc-table';
+import React, { useState } from "react";
+import Table from "rc-table";
 
-const DataTable = props => {
-  const {columns, data,rowsPerPage,visiblePages} = props;
+const DataTable = (props) => {
+  const { columns, data, rowsPerPage, visiblePages } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentData = data.slice(indexOfFirstRow, indexOfLastRow);
 
-  const handlePageChange = pageNumber => {
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   const handleNext = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handlePrevious = () => {
     if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
@@ -41,14 +41,15 @@ const DataTable = props => {
       <Table
         columns={columns}
         data={currentData}
-        tableLayout={'fixed'}
+        tableLayout={"fixed"}
         className="min-w-full"
         rowClassName="bg-white border-t border-primary-borderColorNew"
       />
 
-      <div className="flex justify-between items-center px-2 py-1  bg-primary-boxHeaderColor text-white text-[12px]">
+      <div className="flex justify-between px-2 py-1  bg-primary-boxHeaderColor text-white text-[12px]">
         <span>
-          Files {indexOfFirstRow + 1} to {Math.min(indexOfLastRow, data.length)} of {data.length}
+          Records {indexOfFirstRow + 1} to{" "}
+          {Math.min(indexOfLastRow, data.length)} of {data.length}
         </span>
 
         <div>
@@ -56,18 +57,22 @@ const DataTable = props => {
             onClick={handlePrevious}
             disabled={currentPage === 1}
             className={`mx-1 px-3 py-1 border rounded ${
-              currentPage === 1 ? 'bg-gray-300 text-gray-500' : 'bg-blue-500 text-white'
+              currentPage === 1
+                ? "bg-gray-300 text-gray-500"
+                : "bg-blue-500 text-white"
             }`}
           >
             Previous
           </button>
 
-          {pageNumbers.slice(startPage - 1, endPage).map(number => (
+          {pageNumbers.slice(startPage - 1, endPage).map((number) => (
             <button
               key={number}
               onClick={() => handlePageChange(number)}
               className={`mx-1 px-3 py-1 border rounded ${
-                currentPage === number ? 'bg-gray-500 text-black' : 'bg-blue-500 text-white'
+                currentPage === number
+                  ? "bg-gray-500 text-black"
+                  : "bg-blue-500 text-white"
               }`}
             >
               {number}
@@ -78,7 +83,9 @@ const DataTable = props => {
             onClick={handleNext}
             disabled={currentPage === totalPages}
             className={`mx-1 px-3 py-1 border rounded ${
-              currentPage === totalPages ? 'bg-gray-300 text-gray-500' : 'bg-blue-500 text-white'
+              currentPage === totalPages
+                ? "bg-gray-300 text-gray-500"
+                : "bg-blue-500 text-white"
             }`}
           >
             Next

@@ -13,7 +13,7 @@ const Option = ({
   const isLabelLeft = labelPosition === 'left';
 
   return (
-    <div className={`mb-2 ${isLabelLeft ? 'flex items-center' : 'flex flex-col'}`}>
+    <div className={`mb-1 ${isLabelLeft ? 'flex items-center' : 'flex flex-col'}`}>
       {label && (
         <label
           className={`text-sm font-bold mb-${isLabelLeft ? '0' : '1'} mr-${isLabelLeft ? '2' : '0'}`}
@@ -27,7 +27,7 @@ const Option = ({
         onChange={onChange}
         disabled={disabled}
         required={required}
-        className="w-[240px] h-[26px] border border-gray-300 text-[12px] font-sans px-1"
+        className="w-[240px] h-[28px] border border-gray-300 text-[12px] font-sans px-1"
       >
         {items.map((item, index) => (
           <option key={index} value={item.value}>

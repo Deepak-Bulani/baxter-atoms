@@ -22,6 +22,27 @@ a:hover {
   color: #535bf2;
 }
 
+
+
+.rc-table-thead tr {
+  background-color: red;
+}
+
+
+.custom-table-header {
+  background-color: red; /* Blue background */
+  color: white; /* White text */
+  text-align: center;
+  border: 1px solid yellow;
+  border-radius: 5px;
+}
+
+.custom-header-cell {
+  padding: 10px;
+  border-right: 2px solid yellow;
+  text-align: center;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -33,6 +54,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #0066cc;
 }
 
 button {
