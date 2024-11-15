@@ -1,7 +1,8 @@
+// src/components/UserCard.js
 import React from "react";
+import { Link } from "react-router-dom";
 
-const UserCard = (prop) => {
-  const { accountDetails } = prop;
+const UserCard = ({ accountDetails }) => {
   return (
     <div className="p-10">
       <h2 className="text-lg font-bold mb-4">Account Information</h2>
@@ -13,12 +14,13 @@ const UserCard = (prop) => {
             </div>
             <div className="text-left">
               <p className="text-xs m-0 leading-none">{detail.value}</p>
-              <Link
+              {/* <Link
                 to={detail.link}
                 className="text-blue-500 text-xs hover:underline m-0 leading-none block"
               >
                 {detail.linkText}
-              </Link>
+              </Link> */}
+              <p>Link</p>
             </div>
           </div>
         </div>
